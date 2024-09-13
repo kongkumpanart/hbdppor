@@ -1,4 +1,4 @@
-'use client';
+'use client'; // แจ้งให้ Next.js รู้ว่าไฟล์นี้เป็น Client Component
 
 import { useSearchParams } from 'next/navigation';
 import styles from '@/app/styles/HbdPage.module.css';
@@ -10,7 +10,8 @@ export default function HbdPage() {
     return (
         <div className={styles.container}>
             <img src="/cake.gif" alt="Cake" className={styles.cakeImage}/>
-            <h1 className={styles.title}>Happy Birthday to P'opor kubb<br />
+            <h1 className={styles.title}>
+              Happy Birthday to P'opor kubb<br />
               {age}yo!<br />
               Wishing you endless happiness every day.<br />
               May you enjoy good health and live the life you've always dreamed of.<br />

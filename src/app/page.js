@@ -1,4 +1,4 @@
-'use client';  // บอกให้ Next.js รู้ว่าไฟล์นี้เป็น Client Component
+'use client'; // แจ้งให้ Next.js รู้ว่าไฟล์นี้เป็น Client Component
 
 import Link from 'next/link';
 import styles from '@/app/styles/Home.module.css';
@@ -20,6 +20,7 @@ export default function Home() {
       <h1 className={styles.title}>Press to turn off the light</h1>
       <div className={styles.switchContainer}>
         <Switch
+          id="toggle-switch"
           checked={isSwitchOn}
           onCheckedChange={handleSwitchChange}
           className={`${
