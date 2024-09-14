@@ -3,9 +3,11 @@
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import styles from '@/app/styles/CakePage.module.css';
+import { useRouter } from 'next/navigation'; // นำเข้า useRouter
 
 export default function CakePage() {
   const [age, setAge] = useState('');
+  const router = useRouter(); // เรียกใช้ useRouter
 
   const handleNumberClick = (number) => {
     setAge((prev) => (prev === '0' ? number : prev + number));
@@ -17,7 +19,7 @@ export default function CakePage() {
 
   const handleSubmit = () => {
     if (age) {
-      window.location.href = `/hbdpage?age=${age}`;
+      router.push(`/hbdpage?age=${age}`); // ใช้ router.push แทน window.location.href
     }
   };
 

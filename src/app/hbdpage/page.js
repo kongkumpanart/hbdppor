@@ -1,11 +1,11 @@
-'use client'; // แจ้งให้ Next.js รู้ว่าไฟล์นี้เป็น Client Component
-
-import { useSearchParams } from 'next/navigation';
 import styles from '@/app/styles/HbdPage.module.css';
 
-export default function HbdPage() {
-    const searchParams = useSearchParams();
-    const age = searchParams.get('age');
+export default function HbdPage({ searchParams }) {
+    const age = searchParams.age; // ดึงค่า age จาก query string
+
+    if (!age) {
+        return <div>Loading...</div>; // แสดงข้อความโหลดชั่วคราวถ้า age ยังไม่มีค่า
+    }
 
     return (
         <div className={styles.container}>
