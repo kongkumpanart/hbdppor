@@ -9,22 +9,9 @@
   
 .title {
     font-size: 24px;
-}
+    color: black;
+  }
   
-.button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #0070f3;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-}
-  
-.button:hover {
-    background-color: #005bb5;
-}
-
 .switchContainer {
     margin-top: 20px;
   }

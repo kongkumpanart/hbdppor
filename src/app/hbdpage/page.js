@@ -23,7 +23,6 @@ export default function HbdPage({ searchParams }) {
             <img src="/balloons.gif" alt="Balloons" className={styles.balloons} />
             <img src="/rose4-unscreen.gif" alt="Rose4" className={styles.roseBottomRight} />
             <img src="/rose2-unscreen.gif" alt="Rose2" className={styles.roseBottomCenter} />
-            <img src="/rose3-unscreen.gif" alt="Rose3" className={styles.roseBottomCenter} />
             <img src="/rose-unscreen.gif" alt="Rose" className={styles.roseTopRight} />
             <img src="/gifhbd-unscreen.gif" alt="HBD" className={styles.hbdTopLeft} />
 
