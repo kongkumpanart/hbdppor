@@ -14,7 +14,7 @@ const geistMono = localFont({
 
 export const metadata = {
   title: "HBD2P'opor",
-  description: "Happy Birthday WEB",
+  description: "15/09",
 };
 
 export default function RootLayout({ children }) {
