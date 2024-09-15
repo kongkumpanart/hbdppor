@@ -118,7 +118,7 @@
 }
 
 .cute3 {
-  bottom: 5%;
+  bottom: 2%;
   right: 12%;
   width: 200px;
   height: auto;
@@ -140,21 +140,21 @@
 }
 
 .floweryou {
-  top: 75%;
+  top: 72%;
   left: 5%;
   width: 300px;
   height: auto;
 }
 
 .enjoy {
-  top: 75%;
-  right: 34%;
+  top: 72%;
+  right: 25%;
   width: 300px;
   height: auto;
 }
 
 .cute {
-  bottom: 70%;
+  top: 12%;
   left: 55%;
   transform: translateX(-50%);
   width: 300px;
@@ -162,15 +162,15 @@
 }
 
 .star2 {
-  top: 28%;
+  top: 2%;
   right: 0.5%;
   width: 200px;
   height: auto;
 }
 
 .cute2 {
-  top: 75%;
-  right: 20%;
+  top: 72%;
+  right: 15%;
   width: 300px;
   height: auto;
 }
