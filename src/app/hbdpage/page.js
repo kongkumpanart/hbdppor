@@ -1,14 +1,16 @@
 import styles from '@/app/styles/HbdPage.module.css';
 
+
 export default function HbdPage({ searchParams }) {
-    const age = searchParams.age; // ดึงค่า age จาก query string
+    const age = searchParams.age;
 
     if (!age) {
-        return <div>Loading...</div>; // แสดงข้อความโหลดชั่วคราวถ้า age ยังไม่มีค่า
+        return <div>Loading...</div>;
     }
 
     return (
         <div className={styles.container}>
+
             <img src="/cake.gif" alt="Cake" className={styles.cakeImage}/>
             <h1 className={styles.title}>
               Happy Birthday to P'opor kubb<br />

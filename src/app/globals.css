@@ -109,3 +109,18 @@ a {
     @apply bg-background text-foreground;
   }
 }
+
+.footer {
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 10px; /* เพิ่ม margin เพื่อไม่ให้ footerติดกับขอบ */
+  color: #333;
+  border-radius: 5px; /* ทำให้มุมของ footer เป็นโค้งมน */
+}
+.footer p {
+  font-size: 16px; /* ปรับขนาดตัวอักษรที่นี่ */
+  margin: 0; /* ลบ margin เริ่มต้นจาก <p> */
+}
