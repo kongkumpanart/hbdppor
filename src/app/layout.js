@@ -22,8 +22,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
-        <footer className="footer">
-          <p>15/09<br/>oporday</p>
+        <footer className="pointer-events-none fixed inset-x-0 bottom-0 z-50 pb-6 text-center text-xs tracking-[0.2em] text-neutral-400">
+          15/09 · oporday
         </footer>
       </body>
     </html>
