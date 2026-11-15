@@ -12,7 +12,7 @@ export default function Home() {
     setIsSwitchOn(checked);
     if (checked) {
       // ให้หน้าจอค่อยๆ มืดลงก่อนเปลี่ยนหน้า
-      setTimeout(() => router.push('/cakepage'), 600);
+      setTimeout(() => router.push('/namepage'), 600);
     }
   };
 
