@@ -7,7 +7,8 @@ import { Button } from "@/components/ui/button";
 const KEYS = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
 const MAX_DIGITS = 3;
 
-export default function CakePage() {
+export default function CakePage({ searchParams }) {
+  const name = (searchParams?.name ?? '').toString();
   const [age, setAge] = useState('');
   const router = useRouter();
 
@@ -18,7 +19,7 @@ export default function CakePage() {
   const handleClear = () => setAge('');
 
   const handleSubmit = () => {
-    if (age) router.push(`/hbdpage?age=${age}`);
+    if (age) router.push(`/hbdpage?name=${encodeURIComponent(name)}&age=${age}`);
   };
 
   const keyClass =

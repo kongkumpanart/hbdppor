@@ -5,16 +5,17 @@ export const metadata = {
 };
 
 export default function HbdPage({ searchParams }) {
+  const name = (searchParams?.name ?? '').toString().trim().slice(0, 30);
   const age = (searchParams?.age ?? '').toString().replace(/\D/g, '').slice(0, 3);
 
-  if (!age) {
+  if (!age || !name) {
     return (
       <main className="flex min-h-screen items-center justify-center px-6">
         <Link
-          href="/cakepage"
+          href="/namepage"
           className="rounded-full border px-6 py-3 text-sm transition-colors hover:bg-neutral-100"
         >
-          Enter your age first
+          Start from the beginning
         </Link>
       </main>
     );
@@ -29,8 +30,8 @@ export default function HbdPage({ searchParams }) {
         draggable={false}
       />
 
-      <p className="mb-3 text-sm uppercase tracking-[0.25em] text-neutral-500">
-        Happy Birthday to P&apos;opor kubb
+      <p className="mb-3 text-sm tracking-[0.25em] text-neutral-500">
+        Happy Birthday to {name} kubb
       </p>
 
       <h1 className="mb-10 text-7xl font-semibold tracking-tight sm:text-8xl">
