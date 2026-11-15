@@ -1,41 +1,48 @@
 'use client';
 
-import Link from 'next/link';
-import styles from '@/app/styles/Home.module.css';
 import { useState } from 'react';
-import { Switch } from "@/components/ui/switch"; // นำเข้า Switch
-import { useRouter } from 'next/navigation'; // นำเข้า useRouter
+import { useRouter } from 'next/navigation';
+import { Switch } from "@/components/ui/switch";
 
 export default function Home() {
-  const [isSwitchOn, setIsSwitchOn] = useState(false); // สร้าง state สำหรับ Switch
-  const router = useRouter(); // เรียกใช้ useRouter
+  const [isSwitchOn, setIsSwitchOn] = useState(false);
+  const router = useRouter();
 
   const handleSwitchChange = (checked) => {
-    setIsSwitchOn(checked); // อัปเดตสถานะ Switch
+    setIsSwitchOn(checked);
     if (checked) {
-      router.push('/cakepage'); // ใช้ router.push แทนการใช้ window.location.href
+      // ให้หน้าจอค่อยๆ มืดลงก่อนเปลี่ยนหน้า
+      setTimeout(() => router.push('/cakepage'), 600);
     }
   };
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Press to turn off the light</h1>
-      <div className={styles.switchContainer}>
-        <Switch
-          id="toggle-switch"
-          checked={isSwitchOn}
-          onCheckedChange={handleSwitchChange}
-          className={`${
-            isSwitchOn ? 'bg-black' : 'bg-gray-400'
-          } relative inline-flex h-[40px] w-[80px] border-2 border-transparent rounded-full transition-colors duration-200 ease-in-out`}
-        >
-          <span
-            className={`${
-              isSwitchOn ? 'translate-x-9' : 'translate-x-0'
-            } inline-block h-[36px] w-[36px] bg-white rounded-full shadow transform transition-transform duration-200 ease-in-out`}
-          />
-        </Switch>
-      </div>
-    </div>
+    <main className="relative flex min-h-screen flex-col items-center justify-center gap-10 px-6">
+      <img
+        src="/light.jpeg"
+        alt="Light bulb"
+        className="h-auto w-44 select-none sm:w-52"
+        draggable={false}
+      />
+
+      <h1 className="text-center text-3xl font-medium tracking-tight sm:text-4xl">
+        Press to turn off the light
+      </h1>
+
+      <Switch
+        id="toggle-switch"
+        aria-label="Turn off the light"
+        checked={isSwitchOn}
+        onCheckedChange={handleSwitchChange}
+      />
+
+      {/* overlay ตอนปิดไฟ */}
+      <div
+        aria-hidden
+        className={`pointer-events-none fixed inset-0 z-40 bg-black transition-opacity duration-500 ${
+          isSwitchOn ? 'opacity-100' : 'opacity-0'
+        }`}
+      />
+    </main>
   );
 }

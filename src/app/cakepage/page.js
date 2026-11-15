@@ -1,57 +1,70 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Button } from "@/components/ui/button";
-import styles from '@/app/styles/CakePage.module.css';
-import { useRouter } from 'next/navigation'; // นำเข้า useRouter
+
+const KEYS = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+const MAX_DIGITS = 3;
 
 export default function CakePage() {
   const [age, setAge] = useState('');
-  const router = useRouter(); // เรียกใช้ useRouter
+  const router = useRouter();
 
-  const handleNumberClick = (number) => {
-    setAge((prev) => (prev === '0' ? number : prev + number));
+  const handleNumberClick = (n) => {
+    setAge((prev) => (prev.length >= MAX_DIGITS ? prev : prev + n));
   };
 
-  const handleClear = () => {
-    setAge('');
-  };
+  const handleClear = () => setAge('');
 
   const handleSubmit = () => {
-    if (age) {
-      router.push(`/hbdpage?age=${age}`); // ใช้ router.push แทน window.location.href
-    }
+    if (age) router.push(`/hbdpage?age=${age}`);
   };
 
+  const keyClass =
+    "h-16 w-16 rounded-full border border-white/20 bg-transparent text-lg font-normal text-white hover:bg-white/10 hover:text-white sm:h-[72px] sm:w-[72px]";
+
   return (
-    <div className={styles.container}>
-      <img src="/boo1.gif" alt="Boo" className={styles.cakeImage} />
-      <h1 className={styles.title}>Please enter your age kub</h1>
-      <div className={styles.inputContainer}>
-        <input
-          type="text"
-          value={age}
-          readOnly
-          className={styles.input}
-        />
-        <div className={styles.keypad}>
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, '0'].map((num) => (
-            <Button
-              key={num}
-              onClick={() => handleNumberClick(num.toString())}
-              className={styles.keypadButton}
-            >
-              {num}
-            </Button>
-          ))}
-          <Button onClick={handleClear} className={styles.keypadButton}>
-            C
-          </Button>
-          <Button onClick={handleSubmit} className={styles.keypadButton}>
-            ENTER
-          </Button>
-        </div>
+    <main className="flex min-h-screen flex-col items-center justify-center bg-black px-6 text-white">
+      <img
+        src="/cake.gif"
+        alt="Cake"
+        className="mb-8 h-auto w-28 select-none sm:w-32"
+        draggable={false}
+      />
+
+      <h1 className="mb-8 text-center text-3xl font-medium tracking-tight sm:text-4xl">
+        Please enter your age kub
+      </h1>
+
+      <div
+        aria-live="polite"
+        className="mb-8 flex h-16 w-56 items-center justify-center rounded-full border border-white/20 text-3xl tracking-widest"
+      >
+        {age || <span className="text-white/25">–</span>}
       </div>
-    </div>
+
+      <div className="grid grid-cols-3 gap-3">
+        {KEYS.map((n) => (
+          <Button key={n} onClick={() => handleNumberClick(n)} className={keyClass}>
+            {n}
+          </Button>
+        ))}
+        <Button onClick={handleClear} className={keyClass} aria-label="Clear">
+          C
+        </Button>
+        <Button onClick={() => handleNumberClick('0')} className={keyClass}>
+          0
+        </Button>
+        <Button
+          onClick={handleSubmit}
+          disabled={!age}
+          aria-label="Enter"
+          className="h-16 w-16 rounded-full bg-white text-lg font-medium text-black hover:bg-white/85 disabled:opacity-30 sm:h-[72px] sm:w-[72px]"
+        >
+          →
+        </Button>
+      </div>
+    </main>
   );
 }
